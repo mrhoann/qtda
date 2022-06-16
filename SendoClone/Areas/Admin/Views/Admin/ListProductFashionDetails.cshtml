@@ -1,0 +1,85 @@
+﻿@model IEnumerable<DAL.FashionProductDe>
+
+@{
+    ViewBag.Title = "ListProductFashionDetails";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style>
+    body {
+        text-align: center
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    table {
+        border: 1px solid gray;
+    }
+
+    th, td {
+        border: 1px solid gray;
+    }
+</style>
+
+
+<h2>Danh sách chi tiết sản phẩm thời trang</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fabric)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pattern)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SleeveLenght)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Style)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Size)
+        </th>
+        <th>Thao tác</th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Fabric)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Pattern)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SleeveLenght)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Style)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Color)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Size)
+    </td>
+    <td>
+        @Html.ActionLink("Thêm", "CreateProductFashionDetails", new { id = item.ID }) |
+        @Html.ActionLink("Sửa", "UpdateProductFashionDetails", new { id = item.ID }) |
+        @Html.ActionLink("Xóa", "DeleteProductFashionDetails", new { id = item.ID })
+    </td>
+</tr>
+}
+
+</table>

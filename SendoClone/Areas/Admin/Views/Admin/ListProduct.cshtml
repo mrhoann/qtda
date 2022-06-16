@@ -1,0 +1,116 @@
+﻿@model IEnumerable<DAL.Product>
+
+@{
+    ViewBag.Title = "ListProduct";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    body{
+        text-align:center
+    }
+    a{
+        text-decoration:none; 
+    }
+    table{
+        border: 1px solid gray; 
+    }
+    th,td{
+        border:1px solid gray; 
+    }
+</style>
+
+<h2>Danh sách sản phẩm</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductPriceNew)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductPriceOld)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductSold)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.IsFreeShip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsInstallment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            Thao tác
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductDescription)
+    </td>
+    <td>
+        <img width="120" src="@Url.Content(item.ProductImage)" />
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductPriceNew)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductPriceOld)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductSold)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductAddress)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Type)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.IsFreeShip)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IsInstallment)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CategoryID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Status)
+    </td>
+    <td width="10%">
+        @Html.ActionLink("Thêm", "CreateProduct")
+        @Html.ActionLink("Sửa", "UpdateProduct", new { id = item.ID })
+        @Html.ActionLink("Xóa", "DeleteProduct", new { id = item.ID })
+    </td>
+</tr>
+}
+
+</table>

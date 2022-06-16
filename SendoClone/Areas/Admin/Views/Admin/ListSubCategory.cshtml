@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DAL.SubCategory>
+
+@{
+    ViewBag.Title = "ListSubCategory";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách danh mục phụ</h2>
+
+
+<style>
+    body {
+        text-align: center;
+    }
+
+    table {
+        text-align: center
+    }
+
+    th, td {
+        border: 1px solid gray;
+    }
+
+    a {
+        text-decoration: none;
+        display: inline;
+    }
+</style>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubCategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubCategoryImage)
+        </th>
+        <th>Thao tác</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubCategoryName)
+            </td>
+            <td>
+                <img width="60" height="60" src="@Url.Content(item.SubCategoryImage)" />
+            </td>
+            <td>
+                @Html.ActionLink("Thêm", "CreateSubCategory")
+                @Html.ActionLink("Sửa", "UpdateSubCategory", new { id = item.ID })
+                @Html.ActionLink("Xóa", "DeleteSubCategory", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>

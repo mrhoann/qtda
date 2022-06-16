@@ -1,0 +1,179 @@
+﻿
+@{
+    ViewBag.Title = "StatusOrderShiped";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="main-manager-order-wrap">
+    <div class="main-category-order">
+        <div class="main-category-info-user">
+            <ul>
+                <li>
+                    <div class="main-category-wrap-icon-user">
+
+                        <img width="30" src="data:image/gif;base64,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">
+                    </div>
+                </li>
+                <li>
+                    <span class="main-category-name-user">@ViewBag.myCustomer.CustomerName</span><br>
+                    <a class="update-account" href="/Sendo/Address">Chỉnh sửa tài khoản</a>
+                </li>
+            </ul>
+        </div>
+        <div class="main-transaction">
+            <span class="main-transaction-title">
+                <span>
+                    Quản lí giao dịch
+                </span>
+            </span>
+            <ul class="nav-item-order-user">
+                <li>
+                    <a href="#">
+                        <div class="icon-order-nav">
+                            <i class="far fa-address-card"></i>
+                        </div>
+                        Đơn hàng
+                    </a>
+                </li>
+                <li><a href="#"><div class="icon-order-nav"><i class="fas fa-history"></i></div> Đơn hàng dịch vụ tiện ích</a></li>
+                <li><a href="#"><div class="icon-order-nav"><i class="fas fa-money-check-alt"></i></div> Tài khoản Senpay</a></li>
+
+                <li><a href="#"><div class="icon-order-nav"><i class="fas fa-map-marker-alt"></i></div> Địa chỉ ngân hàng</a></li>
+                <li><a href="#"><div class="icon-order-nav"><i class="far fa-heart"></i></div> Sản phẩm yêu thích</a></li>
+            </ul>
+        </div>
+        <div class="main-transaction">
+            <span class="main-transaction-title">
+                <span>
+                    Quản lí tài khoản
+                </span>
+            </span>
+            <ul class="nav-item-order-user">
+                <li>
+                    <a href="#">
+                        <div class="icon-order-nav">
+                            <i class="far fa-address-book"></i>
+                        </div>
+                        Thông tin tài khoản
+                    </a>
+                </li>
+                <li><a href="#"><div class="icon-order-nav"><i class="fas fa-store-alt"></i></div> Shop yêu thích</a></li>
+                <li><a href="#"><div class="icon-order-nav"><i class="fas fa-cannabis"></i></div> Ưu đãi của tôi</a></li>
+
+                <li><a href="#"><div class="icon-order-nav"><i class="far fa-question-circle"></i></div> Hỏi đáp</a></li>
+                <li><a href="#"><div class="icon-order-nav"><i class="fas fa-users"></i></div> Liên kết mạng xã hội</a></li>
+            </ul>
+        </div>
+        <div class="advertisiment-order">
+            <span>
+                Cài đặt <b>Siêu ứng dụng Sendo</b> trên smartphone để <span style="color: red;font-weight: bold;">“NHẬN THÔNG BÁO TRẠNG THÁI ĐƠN HÀNG”</span> mọi lúc mọi nơi
+            </span>
+            <ul>
+                <li>
+                    <a href="">
+                        <img width="110" src="https://contactbase.net/wp-content/uploads/2018/12/Download-on-the-AppStore.png" />
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img width="120" src="https://www.max983fm.com/wp-content/uploads/2016/05/Google-Play.png" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-status-order">
+        <span class="main-status-order-title">Quản lí đơn hàng</span>
+        <div class="main-status-order-product">
+            <ul>
+                <a href="/Sendo/ManagerOrderUser">
+                <li id="order-user-1">Chờ xác nhận</li>
+                </a>
+                <a href="/Sendo/StatusOrderConfirm">
+                <li id="order-user-2">Đã xác nhận</li>
+                </a>
+                <a href="/Sendo/StatusOrderShiping">
+                <li id="order-user-3">Đang vận chuyển</li>
+                </a>
+                <a href="/Sendo/StatusOrderShiped">
+                <li id="order-user-4">Đã giao hàng</li>
+                </a>
+                <a href="/Sendo/StatusOrderCancle">
+                <li id="order-user-5">Đã hủy</li>
+                </a>
+            </ul>
+
+            @foreach (var itemOrder in ViewBag.myListOrder)
+            {
+                if (itemOrder.UserID == ViewBag.myUserID)
+                {
+                    foreach (var itemOrderDetails in ViewBag.myListOrderDetails)
+                    {
+                        if (itemOrder.ID == itemOrderDetails.OrderID && itemOrderDetails.Status == "4")
+                        {
+                            ViewBag.check = 1;
+                            foreach (var itemProduct in ViewBag.myListProduct)
+                            {
+                                string myPrice = Convert.ToString(itemProduct.ProductPriceNew);
+                                string mainPrice = myPrice + ".000";
+                                if (itemOrderDetails.ProductID == itemProduct.ID)
+                                {
+
+                                    <div style="border-bottom:2px solid gray;" class="main-item-product-order-user">
+                                        <img width="120" src="@Url.Content(itemProduct.ProductImage)" alt="">
+                                        <span style="font-size:14px;width:50px" class="main-item-product-name-order">
+                                            @itemProduct.ProductName
+                                        </span>
+                                        <span>|</span>
+                                        <span class="main-item-product-price-order">
+                                            <span class="main-item-product-title-order"> Giá:</span> @mainPrice đ
+                                        </span>
+                                        <span>|</span>
+                                        <span class="main-item-product-quantity-order">
+                                            <span class="main-item-product-title-order">Số lượng:</span>   x @itemOrderDetails.Quantity
+                                        </span>
+                                        <span>|</span>
+                                        <span class="main-item-product-total-order">
+                                            <span class="main-item-product-title-order">Tổng:</span>  @itemOrderDetails.Total đ
+                                        </span>
+                                        <span>|</span>
+                                        <span class="main-item-product-status-order">
+
+                                            <span class="main-item-product-title-order">Trạng thái: </span>
+                                            @if (itemOrderDetails.Status == "4")
+                                            {
+                                                <span style="display:none" id="order-user-status-now">@itemOrderDetails.Status</span>
+                                                <span><i style="color:forestgreen" class="fas fa-check"></i> Đã nhận hàng</span>
+                                            }
+                                        </span>
+                                       
+                                       
+                                    </div>
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            @if (ViewBag.check == 0)
+            {
+
+                <div style="margin-top:30px" class="notification-cart-empty">
+                    <span>Bạn chưa nhận được đơn hàng nào.</span>
+                </div>
+            }
+        </div>
+
+    </div>
+</div>
+
+<script>
+    const status = document.getElementById('order-user-status-now').innerHTML;
+    if (status == "4") {
+        document.getElementById('order-user-4').style.borderBottom = '2px solid orangered';
+    }
+</script>
+
+

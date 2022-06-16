@@ -1,0 +1,52 @@
+﻿@model IEnumerable<DAL.Comment>
+
+@{
+    ViewBag.Title = "ListComment";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ListComment</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommentContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommentDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductID)
+        </th>
+        <th>Thao tác</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommentContent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommentDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "DeleteComment", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

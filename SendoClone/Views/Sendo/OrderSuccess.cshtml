@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "OrderSuccess";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    .orS:hover {
+        cursor: pointer;
+        background-color: rgba(128, 128, 128, 0.212);
+    }
+</style>
+<div style="width:1200px;height:500px;display:flex;flex-direction:column;justify-content: center;
+        align-items: center;margin:0 auto;margin-top:130px">
+
+    <i style="font-size:100px;color:green" class="far fa-check-circle"></i></br>
+    <span style="font-size:55px;font-weight:bold;color:gray">Đặt hàng thành công !</span>
+    <ul style="width:600px;height:auto;margin:0 auto;display:flex;justify-content:space-around;margin-top:20px">
+        <a class="orS" style="width:200px;height:40px;text-align:center;line-height:40px;border-radius:20px;border:1px solid gray;color:#333;font-weight:bold;text-decoration:none" href="/Sendo/Home">Tiếp tục mua sắm</a>
+        <a class="orS" style="width:200px;height:40px;text-align:center;line-height:40px;border-radius:20px;border:1px solid gray;color:#333;font-weight:bold;text-decoration:none" href="/Sendo/ManagerOrderUser">Xem thông tin đặt hàng</a>
+    </ul>
+
+</div>
+
+

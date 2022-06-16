@@ -1,0 +1,68 @@
+﻿@model IEnumerable<DAL.Shop>
+
+@{
+    ViewBag.Title = "ListShop";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách shop</h2>
+
+<style>
+    body {
+        text-align: center;
+    }
+
+    table {
+        text-align: center
+    }
+
+    th, td {
+        border: 1px solid gray;
+    }
+
+    a {
+        text-decoration: none;
+        display: inline;
+    }
+</style>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShopName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShopAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>Thao tác</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShopName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShopAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Thêm", "CreateShop", new { id = item.ID }) |
+                @Html.ActionLink("Sửa", "UpdateShop", new { id = item.ID }) |
+                @Html.ActionLink("Xóa", "DeleteShop", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>

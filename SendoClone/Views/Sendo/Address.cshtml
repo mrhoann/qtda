@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Address";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="main-address-wrap">
+    <div class="main-address-wrap-title">
+        <span>ĐỊA CHỈ NHẬN HÀNG</span>
+    </div>
+    <div class="main-address-wrap-content">
+        <div class="main-address-wrap-content-item">
+            <form action="/Sendo/CreateCustomer" method="POST">
+                <input type="hidden" name="UserID" value="@ViewBag.UserID" />
+                <div class="main-address-wrap-content-item-input">
+                    <label for="">HỌ TÊN NGƯỜI NHẬN</label>
+                    <input class="address-item-input" name="CustomerName" type="text"></br>
+                </div>
+                <div class="main-address-wrap-content-item-input">
+                    <label for="">SỐ ĐIỆN THOẠI</label>
+                    <input class="address-item-input" type="text" name="Phone"></br>
+                </div>
+                <div class="main-address-wrap-content-item-input">
+                    <label for="">TỈNH THÀNH / QUẬN HUYỆN</label>
+                    <input name="City" class="address-item-input" type="text"></br>
+                </div>
+                <div class="main-address-wrap-content-item-input">
+                    <label for="">PHƯỜNG / XÃ</label>
+                    <input name="Wards" class="address-item-input" type="text"></br>
+                </div>
+                <div class="main-address-wrap-content-item-input">
+                    <label for="">ĐỊA CHỈ</label>
+                    <input name="Adress" class="address-item-input" type="text"></br>
+                </div>
+                <div class="main-address-wrap-content-item-input">
+                    <label for="">CHỌN LOẠI ĐỊA CHỈ</label>
+                    <input checked value="1"  class="address-item-input" name="TypeAdress" type="radio" id="radio1">
+                    <span>Nhà riêng</span>
+                    <input value="2" class="address-item-input address-radio-city" name="TypeAdress" type="radio" id="radio2">
+                    <span>Công ty</span>
+                </div>
+                <div class="main-address-wrap-content-item-input">
+                    <label for="">EMAIL</label>
+                    <input class="address-item-input" type="email" name="Email">
+                </div>
+                <div class="main-address-default">
+                    <input class="address-item-input" type="checkbox">
+                    <span>Đặt làm địa chỉ mặc định</span>
+                </div>
+                <div class="main-address-default">
+                    <button class="btn-address-cancle">Hủy</button>
+                    <input class="btn-address-submit" type="submit" value="Tiếp tục">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

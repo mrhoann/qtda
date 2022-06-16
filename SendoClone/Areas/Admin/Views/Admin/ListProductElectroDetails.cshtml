@@ -1,0 +1,105 @@
+﻿@model IEnumerable<DAL.ElectroluxProductDe>
+
+@{
+    ViewBag.Title = "ListProductElectroDetails";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style>
+    body {
+        text-align: center
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    table {
+        border: 1px solid gray;
+    }
+
+    th, td {
+        border: 1px solid gray;
+    }
+</style>
+
+
+<h2>Danh sách chi tiết sản phẩm Electronic</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Material)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Capacity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Insurance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WarrantyMethod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Made)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Size)
+        </th>
+        <th>
+            Thao tác
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Type)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Material)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Capacity)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Manufacturer)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Insurance)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.WarrantyMethod)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Made)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Color)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Size)
+    </td>
+    <td>
+        @Html.ActionLink("Thêm", "CreateProductElectroDetails")
+        @Html.ActionLink("Sửa", "UpdateProductElectroDetails", new { id = item.ID })
+        @Html.ActionLink("Xóa", "DeleteProductElectroDetails", new { id = item.ID })
+    </td>
+</tr>
+}
+
+</table>

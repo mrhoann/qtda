@@ -1,0 +1,138 @@
+﻿
+@{
+    ViewBag.Title = "myListCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model SendoClone.Models.myCart
+
+<div class="main-cart-wrap">
+
+    @if(@ViewBag.quantityCart == 0)
+            {
+
+
+<div class="main-cart-empty">
+                <img width="400" src="https://media3.scdn.vn/img4/2021/02_02/JikA6AqzCC55LcNmcHjZ.png" alt="Cart empty" class="d7e-1867e5 d7e-7271c9">
+                <span class="main-cart-empty-text-o">Giỏ hàng cảm thấy trống trải</span>
+                <span  class="main-cart-empty-text-t">Ai đó ơi, mua sắm để nhận khuyến mãi từ Sendo ngay!</span>
+                <a href="/Sendo/Home"><button class="main-cart-empty-text-btn">Mua sắm ngay</button></a>
+            </div>
+            }
+            else
+            {
+
+    <span class="main-cart-info-quantity-cart">Giỏ hàng của bạn (@ViewBag.quantityCart)</span>
+    <div class="main-cart-product-list">
+        <div class="main-cart-product-list-item">
+
+            @foreach (var item in Model.Items)
+            {
+                string priceNew = Convert.ToString(item.myProduct.ProductPriceNew);
+                string priceOld = Convert.ToString(item.myProduct.ProductPriceOld);
+                string myPriceNew = priceNew + ".000";
+                string myPriceOld = priceOld + ".000";
+                ViewBag.myPriceNew = myPriceNew;
+                ViewBag.myPriceOld = myPriceOld;
+            <div class="main-cart-product-item">
+                <div class="main-cart-product-item-name-shop">
+                    <span>
+                   
+                        @foreach (var itemShop in ViewBag.myListShop)
+                {
+                    if (item.myProduct.ID == itemShop.ProductID)
+                    {
+                        @itemShop.ShopName
+                    }
+                }
+                                   
+                
+                    </span>
+                    <span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="d7e-0f24ac d7e-72271e"><path d="M20 2a2 2 0 012 2v12a2 2 0 01-2 2h-7.913L6 21.804V18H4a2 2 0 01-2-2V4a2 2 0 012-2h16zm0 2H4v12h4v2.196L11.513 16H20V4zm-6 7v2H7v-2h7zm2-4v2H7V7h9z" fill="#6F787E" fill-rule="nonzero"></path></svg>
+                        Chat với Shop
+                    </span>
+                </div>
+                <div class="main-cart-product-item-info">
+                    <img width="74" src=" @Url.Content(item.myProduct.ProductImage)" alt="">
+                    <span class="main-cart-product-item-description">
+                         @item.myProduct.ProductName
+                    </span>
+                    <span class="main-cart-product-item-price">
+                        <span class="main-cart-product-item-price-new">@myPriceNew đ</span>
+                        <span class="main-cart-product-item-price-old">@myPriceOld đ</span>
+                    </span>
+                    <div class="main-cart-product-item-quantity">
+                        <ul>
+                            <span style="display:none" class="IDCartProc">@item.myProduct.ID</span>
+                            <li class="quantity-product product-cart-main-select-quantity-decrement">-</li>
+                            <li class="quantity-product product-cart-main-select-quantity-item">@item.QuantityProduct</li>
+                            <li class="quantity-product product-cart-main-select-quantity-increment">+</li>
+                        </ul>
+                    </div>
+                    <a href="#">
+                        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="d7e-0f24ac d7e-72271e"><path d="M16.553 2C20.258 2.015 23 5.14 23 9.12c0 3.038-1.694 5.972-4.849 8.81-1.656 1.49-3.77 2.963-5.285 3.747l-.866.45-.866-.45c-1.515-.784-3.63-2.258-5.285-3.747C2.694 15.092 1 12.158 1 9.12 1 5.097 3.716 2 7.455 2c1.395 0 2.376.189 3.467.728a6.3 6.3 0 011.068.668 6.17 6.17 0 011.113-.7c1.07-.524 2.003-.696 3.45-.696zm-.004 2c-1.162 0-1.803.118-2.567.492-.47.23-.887.541-1.25.936l-.73.79-.735-.784a4.266 4.266 0 00-1.232-.913C9.248 4.13 8.565 4 7.455 4 4.884 4 3 6.148 3 9.12c0 2.38 1.414 4.83 4.186 7.323 1.512 1.36 3.455 2.718 4.814 3.43 1.359-.712 3.302-2.07 4.814-3.43C19.586 13.949 21 11.5 21 9.12c0-2.931-1.912-5.11-4.45-5.12z" fill="#6F787E" fill-rule="nonzero"></path></svg>
+                    </a>
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="d7e-0f24ac d7e-72271e"><path d="M14 1c.537 0 1.042.214 1.414.586.308.307.509.708.575 1.211L16 3v1h2.5a2.49 2.49 0 011.623.599l.145.133c.404.405.66.937.723 1.564L21 6.5V9h-1.111l-.62 11.166a2.997 2.997 0 01-.789 1.866l-.145.147c-.49.463-1.12.75-1.844.812l-.218.009H7.727a2.994 2.994 0 01-2.975-2.616l-.02-.218L4.11 9H3V6.5c0-.671.267-1.303.732-1.768.405-.404.937-.66 1.564-.723L5.5 4H8V3c0-.477.169-.93.468-1.285l.118-.13c.307-.307.708-.508 1.211-.574L10 1zm3.885 8H6.114l.611 11.012.012.132c.032.224.14.428.303.582a.99.99 0 00.687.274h8.503l.132-.004a.994.994 0 00.598-.27.996.996 0 00.312-.67L17.885 9zM9 11a1 1 0 011 1v6a1 1 0 01-2 0v-6a1 1 0 011-1zm3 0a1 1 0 011 1v6a1 1 0 01-2 0v-6a1 1 0 011-1zm3 0a1 1 0 011 1v6a1 1 0 01-2 0v-6a1 1 0 011-1zM8 5.998H5.55l-.102.005A.495.495 0 005 6.5V7h14.001v-.45l-.004-.102A.495.495 0 0018.5 6H8v-.002zm2.067-3L10 3v1h4.001l.001-.933L14 3l-3.932-.002z" fill="#6F787E" fill-rule="nonzero"></path></svg>
+                    </a>
+                </div>
+                <div class="main-cart-endow">
+                    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="d7e-0f24ac"><g fill="none" fill-rule="nonzero"><path fill="#CFD2D4" d="M14 6h7v12h-7z"></path><path d="M21 4a2 2 0 012 2v3.112l-.5.289A2.998 2.998 0 0021 12c0 1.084.579 2.066 1.5 2.6l.5.288V18a2 2 0 01-2 2H3a2 2 0 01-2-2v-3.112l.5-.289A2.998 2.998 0 003 12a2.998 2.998 0 00-1.5-2.6L1 9.113V6a2 2 0 012-2h18zm0 2l-6-.001a1 1 0 01-.883.994L14 7a1 1 0 01-1-1.001L3 6v2c1.241.93 2 2.4 2 4s-.759 3.07-2 4v2l10-.001a1 1 0 011.993-.116L15 18 21 18v-2c-1.241-.93-2-2.4-2-4s.759-3.07 2-4V6zm-7 8a1 1 0 110 2 1 1 0 010-2zm0-3a1 1 0 110 2 1 1 0 010-2zm0-3a1 1 0 110 2 1 1 0 010-2z" fill="#6F787E"></path></g></svg>
+                    <span>
+                        Mã giảm giá của Shop
+                    </span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="d7e-0f24ac _96a-019510"><path fill="#6F787E" fill-rule="nonzero" d="M13.214 12L8 6.476 9.393 5 16 12l-6.607 7L8 17.524z"></path></svg>
+                </div>
+                <div class="main-cart-hr"></div>
+                <div class="main-cart-free-ship">
+                    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="d7e-0f24ac"><g fill="none" fill-rule="evenodd"><path d="M3 5h13.076l2.304 3.87a2 2 0 00.664.677L23 12H1V7a2 2 0 012-2z" fill="#D6EFDF"></path><path d="M16.382 5a2 2 0 011.789 1.106l1.605 3.21L23 11.464V16a2 2 0 01-2 2h-1.171a3.001 3.001 0 01-5.658 0H9.829a3.001 3.001 0 01-5.658 0H3a2 2 0 01-2-2V7a2 2 0 012-2h13.382zM7 16a1 1 0 100 2 1 1 0 000-2zm10 0a1 1 0 100 2 1 1 0 000-2zm-.618-9H3v9h1.17a3.001 3.001 0 015.659 0h4.342a3.001 3.001 0 015.658 0H21v-3.465l-2.776-1.85L16.382 7z" fill="#449460"></path></g></svg>
+                    <span>
+                        Miễn phí giao hàng tới
+                        <b>2.000đ</b>
+                    </span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="d7e-0f24ac _96a-304adf"><path d="M12 1c6.075 0 11 4.925 11 11s-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1zm1.004 8.998h-3.001v2h1v2h-1v2h4v-2h-1v-4zm-1.004-3a1 1 0 100 2 1 1 0 000-2z" fill="#133096" fill-rule="nonzero"></path></svg>
+                </div>
+            </div>
+
+            }
+        </div>
+        <div class="main-cart-total-payment">
+            <div class="main-cart-total-payment-endow">
+                <ul>
+                    <li>
+                        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="d7e-0f24ac"><g fill="none" fill-rule="nonzero"><path fill="#CFD2D4" d="M14 6h7v12h-7z"></path><path d="M21 4a2 2 0 012 2v3.112l-.5.289A2.998 2.998 0 0021 12c0 1.084.579 2.066 1.5 2.6l.5.288V18a2 2 0 01-2 2H3a2 2 0 01-2-2v-3.112l.5-.289A2.998 2.998 0 003 12a2.998 2.998 0 00-1.5-2.6L1 9.113V6a2 2 0 012-2h18zm0 2l-6-.001a1 1 0 01-.883.994L14 7a1 1 0 01-1-1.001L3 6v2c1.241.93 2 2.4 2 4s-.759 3.07-2 4v2l10-.001a1 1 0 011.993-.116L15 18 21 18v-2c-1.241-.93-2-2.4-2-4s.759-3.07 2-4V6zm-7 8a1 1 0 110 2 1 1 0 010-2zm0-3a1 1 0 110 2 1 1 0 010-2zm0-3a1 1 0 110 2 1 1 0 010-2z" fill="#6F787E"></path></g></svg>
+                        <span>
+                            Mã ưu đãi Sendo
+                        </span>
+                    </li>
+                    <li>
+                        Chọn/nhập mã
+                    </li>
+                </ul>
+            </div>
+            <div class="main-cart-total-payment-price">
+                <span>Tạm tính:</span>
+                <span>
+                    @if (ViewBag.check == 1)
+                    {
+                    <span style="color:#333"> @ViewBag.totalMoney</span>
+                    <span>đ</span>
+                }
+                else
+                {
+                   <span style="color:#333"> @ViewBag.mainTotal </span>
+                   <span>đ</span>
+                }
+                </span>
+            </div>
+            <div class="main-cart-total-payment-btn-wrap">
+                <a href="/Sendo/Address">
+                    <button class="main-cart-total-payment-btn">Mua ngay</button>
+                </a>
+            </div>
+        </div>
+    </div>
+            }
+</div>
+

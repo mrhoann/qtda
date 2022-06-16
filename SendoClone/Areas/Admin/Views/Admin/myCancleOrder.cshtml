@@ -1,0 +1,152 @@
+﻿
+@{
+    ViewBag.Title = "CancleOrder";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    table {
+        width: 100%;
+        text-align: center;
+    }
+
+    a {
+        color: #333;
+        text-decoration: none;
+    }
+
+    th, td {
+        border: 1px solid gray;
+    }
+
+    .nav-order {
+        display: flex;
+    }
+
+        .nav-order li {
+            width: 140px;
+            height: 40px;
+            margin-left: 10px;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            list-style: none;
+        }
+</style>
+
+
+
+
+<ul class="nav-order">
+    <a href="/Admin/Admin/Order">
+    <li id="order-1" class="nav-item-order">Chờ duyệt</li>
+    </a>
+    <a href="/Admin/Admin/ConfirmOrder">
+    <li id="order-2" class="nav-item-order">Chờ giao hàng</li>
+    </a>
+    <a href="/Admin/Admin/ShipingOrder">
+    <li id="order-3" class="nav-item-order">Đang giao</li>
+    </a>
+    <a href="/Admin/Admin/ShipFinishOrder">
+    <li id="order-4" class="nav-item-order">Đã giao</li>
+    </a>
+    <a href="/Admin/Admin/myCancleOrder">
+    <li id="order-5" class="nav-item-order">Đã hủy</li>
+    </a>
+</ul>
+<table>
+    <tr>
+        <th>Tên khách hàng</th>
+        <th>Số điện thoại</th>
+        <th>Địa chỉ</th>
+        <th>Ảnh sản phẩm</th>
+        <th>Tên sản phẩm</th>
+        <th>Số lượng</th>
+        <th>Giá</th>
+        <th>Tổng tiền</th>
+        <th>Trạng thái</th>
+        <th>Thao tác</th>
+
+    </tr>
+    @foreach (var itemOrder in ViewBag.myListOrder)
+    {
+        foreach (var itemOrderDetails in ViewBag.myListOrderDetails)
+        {
+            if (itemOrder.ID == itemOrderDetails.OrderID && itemOrderDetails.Status == "0")
+            {
+                foreach (var itemCustomer in ViewBag.myListCustomer)
+                {
+                    if (itemCustomer.UserID == itemOrder.UserID)
+                    {
+                        foreach (var itemProduct in ViewBag.myListProduct)
+                        {
+                            if (itemOrderDetails.ProductID == itemProduct.ID)
+                            {
+                                string priceNew = Convert.ToString(itemProduct.ProductPriceNew);
+                                string myPriceNew = priceNew + ".000";
+                                <tr>
+                                    <td>@itemCustomer.CustomerName</td>
+                                    <td>@itemCustomer.Phone</td>
+                                    <td>
+                                        <span>@itemCustomer.Adress</span>
+                                        <span>,@itemCustomer.Wards</span>
+                                        <span>,@itemCustomer.City</span>
+                                    </td>
+
+                                    <td>
+                                        <img src="@Url.Content(itemProduct.ProductImage)" width="120" />
+                                    </td>
+                                    <td width="10%">
+                                        @itemProduct.ProductName
+                                    </td>
+                                    <td>@itemOrderDetails.Quantity</td>
+                                    <td>@myPriceNew</td>
+                                    <td>@itemOrderDetails.Total</td>
+                                    <td>
+                                        @if (itemOrderDetails.Status == "0")
+                                        {
+                                            <span id="status-order" style="display:none">@itemOrderDetails.Status</span>
+                                            <input type="checkbox" />
+                                            <span style="color:orangered;font-weight:400">Chưa thanh toán</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <span style="color:orangered;font-weight:400">Đã hủy đơn hàng</span> 
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+</table>
+
+
+<script>
+    /*
+    const navOrder = document.getElementsByClassName("nav-item-order");
+
+    for (let i = 0; i < navOrder.length; i++) {
+        navOrder[i].addEventListener('click', function () {
+            navOrder[i].classList.add('active');
+            for (let j = 0; j < navOrder.length; j++) {
+                if (j != i) {
+                    navOrder[j].classList.remove('active');
+                }
+            }
+        })
+
+
+    }
+    */
+    const statusOrder = document.getElementById('status-order').innerHTML;
+
+    if (statusOrder == "0") {
+        document.getElementById('order-0').style.borderBottom = "2px solid orangered";
+    }
+
+</script>
+

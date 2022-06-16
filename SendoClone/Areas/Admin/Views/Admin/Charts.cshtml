@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewBag.Title = "Charts";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="margin-left:80px">Thống kê</h2>
+<div style="width: 90%; height:auto; margin: 0 auto;display:flex;flex-wrap:wrap;margin-top:50px">
+    <div style="width:370px;height:220px;background-color:blueviolet;display:flex;flex-direction:column;justify-content:space-around">
+        <div>
+            <span style="font-weight:bold;font-size:20px;margin-left:10px;color:white">@ViewBag.dhmoi</span></br>
+            <div style="display:flex">
+
+                <span style="font-size: 18px; margin-left: 10px;font-weight:500;color:white">Đơn hàng mới</span>
+                <i style="position:relative;left:100px;font-size:60px;color:white" class="fas fa-cart-plus"></i>
+            </div>
+        </div>
+        <div style="width:100%;height:auto;text-align:center">
+            <a style="color:white" href="">Xem thêm</a>
+        </div>
+    </div>
+
+    <div style="float:left;margin-left:8px; width:370px;height:220px;background-color:dodgerblue;display:flex;flex-direction:column;justify-content:space-around">
+        <div>
+            <span style="font-weight:bold;font-size:20px;margin-left:10px;color:white">@ViewBag.dhdangxuli</span></br>
+            <div style="display:flex">
+
+                <span style="font-size: 18px; margin-left: 10px;font-weight:500;color:white">Đơn hàng đang xử lí</span>
+
+                <i style="position:relative;left:100px;font-size:60px;color:white" class="fas fa-cart-arrow-down"></i>
+            </div>
+        </div>
+        <div style="width:100%;height:auto;text-align:center">
+            <a style="color:white" href="">Xem thêm</a>
+        </div>
+    </div>
+
+    <div style="float: left; margin-left: 8px; width: 370px; height: 220px; background-color: lightgreen; display: flex; flex-direction: column; justify-content: space-around ">
+        <div>
+            <span style="font-weight:bold;font-size:20px;margin-left:10px;color:white">@ViewBag.dhhoanthanh</span></br>
+            <div style="display:flex">
+
+                <span style="font-size: 18px; margin-left: 10px;font-weight:500;color:white">Đơn hàng đã hoàn thành</span>
+                <i style="position:relative;left:70px;font-size:60px;color:white" class="fas fa-check-circle"></i>
+            </div>
+        </div>
+        <div style="width:100%;height:auto;text-align:center">
+            <a style="color:white" href="">Xem thêm</a>
+        </div>
+    </div>
+
+    <div style="float: left; margin-left: 8px; width: 370px; height: 220px; background-color: orangered; display: flex; flex-direction: column; justify-content: space-around ">
+        <div>
+            <span style="font-weight:bold;font-size:20px;margin-left:10px;color:white">@ViewBag.dhhuy</span></br>
+            <div style="display:flex">
+
+                <span style="font-size: 18px; margin-left: 10px;font-weight:500;color:white">Đơn hàng đã hủy</span>
+                <i style="position:relative;left:100px;font-size:60px;color:white" class="fas fa-trash-alt"></i>
+            </div>
+        </div>
+        <div style="width:100%;height:auto;text-align:center">
+            <a style="color:white" href="">Xem thêm</a>
+        </div>
+    </div>
+
+</div>
+<!---->
+
+<div style="width: 90%; height: auto; margin: 0 auto;display:flex;flex-wrap:wrap;margin-top:30px">
+    <div style="width:370px;height:220px;background-color:darkslategray;display:flex;flex-direction:column;justify-content:space-around">
+        <div>
+            <span style="font-weight:bold;font-size:20px;margin-left:10px;color:white">@ViewBag.slg</span></br>
+            <div style="display:flex">
+
+                <span style="font-size: 18px; margin-left: 10px;font-weight:500;color:white">Sản phẩm</span>
+                <i style="position:relative;left:100px;font-size:60px;color:white" class="fas fa-box-open"></i>
+            </div>
+        </div>
+        <div style="width:100%;height:auto;text-align:center">
+            <a style="color:white" href="">Xem thêm</a>
+        </div>
+    </div>
+
+    <div style="float:left;margin-left:8px; width:370px;height:220px;background-color:deeppink;display:flex;flex-direction:column;justify-content:space-around">
+        <div>
+            <span style="font-weight:bold;font-size:20px;margin-left:10px;color:white">@ViewBag.dhhoanthanh</span></br>
+            <div style="display:flex">
+
+                <span style="font-size: 18px; margin-left: 10px;font-weight:500;color:white">Số lượng sản phẩm đã bán</span>
+                <i style="position:relative;left:50px;font-size:60px;color:white" class="fas fa-money-check-alt"></i>
+            </div>
+        </div>
+        <div style="width:100%;height:auto;text-align:center">
+            <a style="color:white" href="">Xem thêm</a>
+        </div>
+    </div>
+
+    <div style="float: left; margin-left: 8px; width: 370px; height: 220px; background-color: darkorange; display: flex; flex-direction: column; justify-content: space-around ">
+        <div>
+            <span style="font-weight:bold;font-size:20px;margin-left:10px;color:white">
+               @ViewBag.DTT <span>đ</span>
+            </span></br>
+            <div style="display:flex">
+
+                <span style="font-size: 18px; margin-left: 10px;font-weight:500;color:white">Tổng doanh thu tháng</span>
+                <i style="position:relative;left:70px;font-size:60px;color:white" class="fas fa-money-bill"></i>
+            </div>
+        </div>
+        <div style="width:100%;height:auto;text-align:center">
+            <a style="color:white" href="">Xem thêm</a>
+        </div>
+    </div>
+
+    <div style="float: left; margin-left: 8px; width: 370px; height: 220px; background-color: lightseagreen; display: flex; flex-direction: column; justify-content: space-around ">
+        <div>
+            <span style="font-weight:bold;font-size:20px;margin-left:10px;color:white">
+                @ViewBag.DTN <span>đ</span>
+                </span></br>
+            <div style="display:flex">
+
+                <span style="font-size: 18px; margin-left: 10px;font-weight:500;color:white">Tổng doanh thu năm</span>
+                <i style="position:relative;left:100px;font-size:60px;color:white" class="fas fa-money-bill"></i>
+            </div>
+        </div>
+        <div style="width:100%;height:auto;text-align:center">
+            <a style="color:white" href="">Xem thêm</a>
+        </div>
+    </div>
+
+</div>
+
+

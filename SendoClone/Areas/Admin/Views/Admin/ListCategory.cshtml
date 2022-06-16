@@ -1,0 +1,53 @@
+﻿@model IEnumerable<DAL.Category>
+
+@{
+    ViewBag.Title = "ListCategory";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách danh mục</h2>
+
+<style>
+    body {
+        text-align: center;
+    }
+
+    table {
+        text-align: center
+    }
+
+    th, td {
+        border: 1px solid gray;
+    }
+
+    a {
+        text-decoration: none;
+        display: inline;
+    }
+</style>
+<p>
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>Thao tác</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.ActionLink("Thêm", "CreateCategory")
+                @Html.ActionLink("Sửa", "UpdateCategory", new { id = item.ID })
+                @Html.ActionLink("Xóa", "DeleteCategory", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>

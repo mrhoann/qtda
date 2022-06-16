@@ -1,0 +1,129 @@
+﻿@model IEnumerable<DAL.LaptopProductDe>
+
+@{
+    ViewBag.Title = "ListProductTechDetails";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    body {
+        text-align: center
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    table {
+        border: 1px solid gray;
+    }
+
+    th, td {
+        border: 1px solid gray;
+    }
+</style>
+
+<h2>Danh sách chi tiết sản phẩm công nghệ</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Size)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HardDrive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Insurance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CPU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Graphics)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeCPU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Caching)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CPUSpeed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MemoryRead)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TechScreen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ram)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sizes)
+        </th>
+        <th>
+            Thao tác
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Size)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.HardDrive)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Insurance)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CPU)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Graphics)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TypeCPU)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Caching)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CPUSpeed)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MemoryRead)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TechScreen)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Ram)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Color)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Sizes)
+    </td>
+    <td>
+        @Html.ActionLink("Thêm", "CreateProductTechDetails")
+        @Html.ActionLink("Sửa", "UpdateProductTechDetails", new { id = item.ID })
+        @Html.ActionLink("Xóa", "DeleteProductTechDetails", new { id = item.ID })
+    </td>
+</tr>
+}
+
+</table>

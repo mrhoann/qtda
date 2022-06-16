@@ -1,0 +1,642 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .product-detail-main-select-color-item{
+        margin-left:40px;
+    }
+    .product-detail-main-select-size-item {
+        margin-left: 40px;
+    }
+    .product-detail-main-img ul li:first-child img{
+        border:2px solid orangered; 
+    }
+    .product-detail-comment-content:hover{
+        cursor:pointer;
+    }
+    .btn-submit-comment:hover{
+        cursor:pointer;
+    }
+</style>
+<div class="product-detail-wrap">
+    <div class="product-detail-options">
+        <ul>
+            <li>Tổng quan</li>
+            <li>Đánh giá</li>
+            <li>Hỏi đáp</li>
+            <li>Dành cho bạn</li>
+        </ul>
+    </div>
+    <div class="product-detail-main">
+        <div class="product-detail-main-img">
+            <div class="product-detail-main-img-item">
+                <img width="500" height="500" id="main-img-details" src="@Url.Content(ViewBag.myProduct.ProductImage)" alt="">
+            </div>
+            <ul>
+                @foreach (var item in ViewBag.myListImageDes)
+                {
+                    if (item.ProductID == ViewBag.myProduct.ID)
+                    {
+                        <li><img class="product-detail-img " width="100%" src="@Url.Content(item.ProductImage)" alt=""></li>
+
+                    }
+                }
+            </ul>
+        </div>
+        <div class="product-detail-main-info">
+            <span class="product-detail-main-info-name">
+                <img width="60" src="https://media3.scdn.vn/img4/2020/07_30/h6fJaiL5WkEbDU2eQRZb.png">
+                 @ViewBag.myProduct.ProductName
+            </span><br>
+                   <span class="product-detail-main-info-price">
+                       @ViewBag.myPriceNew
+                   </span>
+                   <span class="product-detail-main-info-price-sale">
+                       @ViewBag.myPriceOld
+                   </span><br>
+                          <span class="product-detail-main-info-purchases">
+                              <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" style="color:#6f787e;width:16px;height:16px" class="d7e-0f24ac"><path d="M12 2c2.489 0 4.672 1.815 4.966 4h2.881a2 2 0 011.98 2.283l-1.714 12A2 2 0 0118.133 22H5.867a2 2 0 01-1.98-1.717l-1.714-12A2 2 0 014.153 6h2.88C7.329 3.815 9.512 2 12 2zM7 8H4.153l1.714 12h12.266l1.714-12H17v2h-2V8H9v2H7V8zm5-4c-1.398 0-2.624.938-2.928 2h5.856c-.304-1.062-1.53-2-2.928-2z" fill="#6F787E" fill-rule="nonzero"></path></svg>
+                              @ViewBag.myProduct.ProductSold lượt mua
+                          </span>
+
+            <div class="product-detail-main-select-color">
+                
+                <ul>
+
+
+                    @foreach (var itemDes in ViewBag.myProductTechDetails)
+                    {
+                        if (itemDes.ProductID == ViewBag.myProduct.ID)
+                        {
+                            if (itemDes.Color != null)
+                            {
+                                <span>Chọn màu sắc: </span>
+                                <li class="product-detail-main-select-color-item">@itemDes.Color</li>
+                            }
+
+                        }
+                    }
+                    @foreach (var itemDes in ViewBag.myProductFashionDetails)
+                    {
+                        if (itemDes.ProductID == ViewBag.myProduct.ID)
+                        {
+                            if (itemDes.Color != null)
+                            {
+                                <span>Chọn màu sắc: </span>
+                                <li class="product-detail-main-select-color-item">@itemDes.Color</li>
+                            }
+                        }
+                    }
+                    @foreach (var itemDes in ViewBag.myProductElectroDetails)
+                    {
+                        if (itemDes.ProductID == ViewBag.myProduct.ID)
+                        {
+                            if (itemDes.Color != null)
+                            {
+                                <span>Chọn màu sắc: </span>
+                                <li class="product-detail-main-select-color-item">@itemDes.Color</li>
+                            }
+                        }
+                    }
+
+                </ul>
+            </div>
+
+
+            <div class="product-detail-main-select-size">
+               
+                <ul>
+                    @foreach (var itemDes in ViewBag.myProductTechDetails)
+                    {
+                        if (itemDes.ProductID == ViewBag.myProduct.ID)
+                        {
+                            if (itemDes.Sizes != null)
+                            {
+                                <span>Chọn kích cỡ: </span>
+                                <li class="product-detail-main-select-size-item">@itemDes.Sizes</li>
+                            }
+                        }
+                    }
+                    @foreach (var itemDes in ViewBag.myProductFashionDetails)
+                    {
+                        if (itemDes.ProductID == ViewBag.myProduct.ID)
+                        {
+
+                            if (itemDes.Size != null)
+                            {
+                                <span>Chọn kích cỡ: </span>
+                                <li class="product-detail-main-select-size-item">@itemDes.Size</li>
+                            }
+                        }
+                    }
+                    @foreach (var itemDes in ViewBag.myProductElectroDetails)
+                    {
+                        if (itemDes.ProductID == ViewBag.myProduct.ID)
+                        {
+
+                            if (itemDes.Size != null)
+                            {
+                                <span>Chọn kích cỡ: </span>
+                                <li class="product-detail-main-select-size-item">@itemDes.Size</li>
+                            }
+                        }
+                    }
+
+
+                </ul>
+            </div>
+
+            <div class="product-detail-main-select-quantity">
+                <span>Chọn số lượng</span>
+                <ul>
+                    <li class=" quantity-product product-detail-main-select-quantity-decrement">-</li>
+                    <li class="product-detail-main-select-quantity-item">1</li>
+                    <li class=" quantity-product product-detail-main-select-quantity-increment">+</li>
+                </ul>
+            </div>
+            <div class="product-detail-main-btn-checkout">
+                <ul>
+                    <span style="display:none" id="idProductDetails">@ViewBag.myProduct.ID</span>
+                    <li class="myAddToCart"><a style="color:#333">Thêm vào giỏ hàng</a></li>
+                    <li>Mua trước trả sau</li>
+                    <li>Mua ngay</li>
+                </ul>
+            </div>
+            <div class="product-detail-main-hr"></div>
+            <span class="product-detail-title-endow">Mã giảm giá của Shop</span>
+            <div class="product-detail-main-endow">
+                <ul class="product-detail-main-endow-item">
+                    <li>
+                        <span>Giảm giá 5K</span><br>
+                        <span style="color:blue;font-size: 12px;">Chi tiết</span>
+                    </li>
+                    <li class="product-detail-main-endow-item-save">Lưu</li>
+                    <div class="product-detail-main-circle-one">
+
+                    </div>
+                    <div class="product-detail-main-circle-two">
+
+                    </div>
+                </ul>
+                <ul class="product-detail-main-endow-item">
+                    <li>
+                        <span>Giảm giá 15K</span><br>
+                        <span style="color:blue;font-size: 12px;">Chi tiết</span>
+                    </li>
+                    <li class="product-detail-main-endow-item-save">Lưu</li>
+                    <div class="product-detail-main-circle-one">
+
+                    </div>
+                    <div class="product-detail-main-circle-two">
+
+                    </div>
+                </ul>
+                <ul class="product-detail-main-endow-item">
+                    <li>
+                        <span>Giảm giá 25K</span><br>
+                        <span style="color:blue;font-size: 12px;">Chi tiết</span>
+                    </li>
+                    <li class="product-detail-main-endow-item-save">Lưu</li>
+                    <div class="product-detail-main-circle-one">
+
+                    </div>
+                    <div class="product-detail-main-circle-two">
+
+                    </div>
+                </ul>
+            </div>
+            <div class="product-detail-main-hr"></div>
+            <span class="product-detail-title-endow">Ưu đãi dành cho bạn</span>
+            <div class="product-detail-main-endow-for-you">
+                <ul>
+                    <li>
+                        <img src="https://media3.scdn.vn/img4/2020/02_22/09A417Le8f9vmJ0aWEu6.png" alt="Miễn phí vận chuyển" class="" style="margin-right: 0.8rem; width: 2.4rem; height: 2.4rem;">
+                        Miễn phí vận chuyện
+                    </li>
+                    <li>
+                        <img src="https://media3.scdn.vn/img4/2021/05_10/HHDHM10eqVNmGUZE5EfA.png" alt="Giảm khi mua qua App" class="" style="margin-right: 0.8rem; width: 2.4rem; height: 2.4rem;">
+                        Giảm giá khi mua qua App
+                    </li>
+                </ul>
+            </div>
+
+            <div class="product-detail-main-hr"></div>
+            <span class="product-detail-title-endow">Quyền lợi kháchh hàng</span>
+            <div class="product-detail-main-endow-for-you">
+                <ul>
+                    <li>
+                        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="d7e-0f24ac" style="margin-right: 0.8rem;"><g fill="none" fill-rule="evenodd"><path d="M19 15l.002-1.245.004-1.954.003-1.691c.004-2.232.003-4.148 0-4.74-.33-.206-.846-.524-1.118-.706C16.414 3.68 14.26 3 12 3 9.838 3 7.029 4.051 6.11 4.664c-.27.18-.779.494-1.11.7V15c0 1.508 2.23 3.569 7 5.802 4.772-2.228 7-4.288 7-5.802z" fill="#D6EFDF"></path><path d="M12 1c2.995 0 5.5 1 7 2s2 1 2 2c.026.291 0 8.5 0 10 0 2.667-3 5.333-9 8-6-2.673-9-5.34-9-8V5c0-1 .5-1 2-2 .162-.108 3.563-2 7-2zm0 2C9.838 3 7.029 4.051 6.11 4.664c-.27.18-.779.494-1.11.7V15c0 1.508 2.23 3.569 7 5.802 4.772-2.228 7-4.288 7-5.802v-.694l.001-.167v-.384l.005-1.954.003-1.691v-.575c.004-1.98.003-3.625 0-4.166-.33-.205-.846-.523-1.118-.705C16.414 3.68 14.26 3 12 3zm3.293 5.293l1.414 1.414L11 15.414l-3.707-3.707 1.414-1.414L11 12.586l4.293-4.293z" fill="#449460"></path></g></svg>
+                        48 giờ hoàn trả
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="my-product-detail">
+
+    <div class="product-detail-description-wrap">
+        <div class="product-detail-description-shop">
+            <div class="product-detail-description-shop-item">
+                @foreach (var item in ViewBag.myListShop)
+                {
+                    if (ViewBag.myProduct.ID == item.ProductID)
+                    {
+                        <div>
+                            <img src="https://media3.scdn.vn/img4/2021/05_18/wph75ICqBY2NXlrzeiV1.png" alt="shop-avatar" class="d7e-1867e5 undefined">
+                        </div>
+                        <div>
+                            <ul>
+                                <li class="product-detail-description-shop-item-name">@item.ShopName</li>
+                                <li><img width="60" src="https://media3.scdn.vn/img4/2020/07_30/h6fJaiL5WkEbDU2eQRZb.png" alt="shop_plus" class="e7b-350112"></li>
+                                <li class="product-detail-description-shop-item-place">@item.ShopAddress | 3.8 <i style="color: lightgreen;" class="far fa-star"></i></li>
+                            </ul>
+                        </div>
+                        <div class="product-detail-description-shop-item-circle-wrap">
+                            @if (item.Status == "Active")
+                            {
+
+
+                                <div style="background-color:orangered" class="product-detail-description-shop-item-circle-wrap-main">
+
+                                </div>
+
+                            }
+                            else
+                            {
+                                <div class="product-detail-description-shop-item-circle-wrap-main">
+
+                                </div>
+                            }
+                        </div>
+                    }
+                }
+
+            </div>
+            <div class="product-detail-description-shop-item-info">
+                <ul>
+                    <li>
+                        <span>3 năm</span><br>
+                        <span>Bán ở Sendo</span>
+                    </li>
+                    <li>
+                        <span>6397</span><br>
+                        <span>Sản phẩm</span>
+                    </li>
+                    <li>
+                        <span>5 ngày</span><br>
+                        <span>Chuẩn bị hàng</span>
+                    </li>
+                    <li>
+                        <span>0 %</span><br>
+                        <span>Tỉ lệ phản hồi</span>
+                    </li>
+                    <li>
+                        <span>Thường...</span><br>
+                        <span>Shop phản hồi</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="product-detail-description-shop-item-contact">
+                <ul>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="d7e-0f24ac d7e-72271e"><path d="M16.553 2C20.258 2.015 23 5.14 23 9.12c0 .631-.073 1.258-.217 1.88H20.71a6.43 6.43 0 00.289-1.88c0-2.931-1.912-5.11-4.45-5.12-1.163 0-1.804.118-2.568.492a4.18 4.18 0 00-1.25.936l-.73.79-.735-.784a4.262 4.262 0 00-1.232-.913C9.248 4.13 8.565 4 7.455 4 4.884 4 3 6.148 3 9.12c0 2.38 1.414 4.83 4.186 7.323 1.512 1.36 3.455 2.718 4.814 3.43v2.253l-.866-.449c-1.515-.784-3.63-2.258-5.285-3.747C2.694 15.092 1 12.158 1 9.12 1 5.097 3.716 2 7.455 2c1.395 0 2.376.189 3.467.728.38.188.736.41 1.068.668a6.146 6.146 0 011.113-.7c1.07-.524 2.003-.696 3.45-.696zM19 13v3h3v2h-3v3h-2v-3h-3v-2h3v-3h2z" fill="#6F787E" fill-rule="nonzero"></path></svg>
+                        <span>Theo dõi shop</span>
+                    </li>
+                    <li>
+                        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="d7e-0f24ac" style="color: rgb(63, 75, 83);"><path d="M19 14a1 1 0 011 1v5a1 1 0 01-.883.993L19 21H5a1 1 0 01-1-1v-5a1 1 0 012 0v4h12v-4a1 1 0 011-1zm-6 1a1 1 0 010 2h-2a1 1 0 010-2h2zm5-12a1 1 0 011 1.004c-.001.245.197.557.718 1.046.122.113.256.233.44.393l.5.432C22.25 7.267 23 8.36 23 10c0 1.598-1.431 3-3 3-.743 0-1.458-.321-2.004-.829-.545.506-1.258.829-1.996.829-.74 0-1.454-.325-2-.833-.545.508-1.26.833-2 .833-.747 0-1.461-.315-2.006-.819C9.45 12.683 8.74 13 8 13c-.74 0-1.455-.325-2-.833-.548.509-1.264.833-2.007.833-1.557 0-2.998-1.446-2.998-3 0-1.64.751-2.732 2.345-4.123.112-.098.483-.416.504-.435.186-.161.322-.282.444-.396.519-.486.714-.796.712-1.037A1 1 0 016 3h12zm-.804 2H6.806c-.213.513-.6.99-1.151 1.506-.145.135-.298.271-.502.448l-.498.43C3.461 8.426 2.995 9.104 2.995 10c0 .451.547 1 .998 1C4.453 11 5 10.458 5 10c0-1.333 2-1.333 2 0 0 .458.546 1 1 1 .464 0 1-.528 1-1 0-1.333 2-1.333 2 0 0 .49.523 1 1 1 .454 0 1-.543 1-1 0-1.333 2-1.333 2 0 0 .456.547 1 1 1 .455 0 1-.542 1-1 0-1.333 2-1.333 2 0 0 .47.537 1 1 1 .473 0 1-.516 1-1 0-.898-.465-1.576-1.658-2.62l-.494-.426c-.202-.175-.354-.31-.497-.445-.553-.518-.94-.995-1.155-1.509z" fill="#6F787E" fill-rule="nonzero"></path></svg>
+                        <span>Vào shop</span>
+                    </li>
+                    <li>
+                        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="d7e-0f24ac d7e-72271e"><path d="M8.22 2.729c.555.548 1.44 1.685 2.755 3.525.585.65.4 1.386-.118 2.084a5.453 5.453 0 01-.436.508 14.89 14.89 0 01-.28.285l-.767.768c-.1.1.586 1.47 1.917 2.803 1.33 1.331 2.7 2.018 2.801 1.917l.767-.767c.422-.422.645-.626.952-.827.638-.42 1.335-.533 1.922-.008 1.917 1.372 3.002 2.213 3.534 2.765 1.037 1.078.9 2.736.006 3.682-.31.328-.704.722-1.169 1.17-2.811 2.813-8.745 1.101-13.293-3.45C2.263 12.63.551 6.695 3.358 3.888c.503-.512.67-.678 1.16-1.161.913-.9 2.648-1.041 3.703 0zm-2.3 1.424c-.483.476-.642.635-1.144 1.145-1.804 1.805-.423 6.595 3.45 10.471 3.87 3.875 8.66 5.257 10.478 3.438.457-.441.83-.815 1.117-1.118.208-.22.245-.671.006-.92-.397-.412-1.37-1.17-3.05-2.377a6.856 6.856 0 00-.505.474l-.766.767c-1.303 1.303-3.521.192-5.629-1.917-2.109-2.111-3.219-4.329-1.916-5.632l.766-.766c.123-.123.18-.18.246-.25.092-.097.167-.182.228-.257-1.166-1.623-1.958-2.637-2.385-3.06-.22-.217-.714-.177-.896.002zm7.735-2.083a9.505 9.505 0 018.275 8.275l-1.975.33a7.503 7.503 0 00-6.63-6.63l.33-1.975zm-.659 3.952a5.501 5.501 0 014.982 4.982l-1.982.33a3.5 3.5 0 00-3.33-3.33l.33-1.982z" fill="#6F787E" fill-rule="nonzero"></path></svg>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="product-detail-description-item">
+            <span>
+                <p>Mô tả sản phẩm</p>
+                <p>@ViewBag.myProduct.ProductDescription</p>
+            </span>
+            <span>
+                <p>Thông tin cơ bản</p>
+            </span>
+            @if (ViewBag.myProduct.Type == "Tech")
+            {
+                foreach (var item in ViewBag.myProductTechDetails)
+                {
+                    if (item.ProductID == ViewBag.myProduct.ID)
+                    {
+
+                        <div class="product-detail-description-laptop">
+                            <ul>
+                                <li>Kích thước màn hình</li>
+                                <li>@item.Size</li>
+                            </ul>
+                            <ul>
+                                <li>Loại ổ cứng</li>
+                                <li>@item.HardDrive</li>
+                            </ul>
+                            <ul>
+                                <li>Bảo hành</li>
+                                <li>@item.Insurance</li>
+                            </ul>
+                            <ul>
+                                <li>CPU</li>
+                                <li>@item.CPU</li>
+                            </ul>
+                            <ul>
+                                <li>Đồ họa</li>
+                                <li>@item.Graphics</li>
+                            </ul>
+                            <ul>
+                                <li>Loại CPU</li>
+                                <li>@item.TypeCPU</li>
+                            </ul>
+                            <ul>
+                                <li>Bộ nhớ đệm</li>
+                                <li>@item.Caching</li>
+                            </ul>
+                            <ul>
+                                <li>Tốc độ CPU</li>
+                                <li>@item.CPUSpeed</li>
+                            </ul>
+                            <ul>
+                                <li>Khe đọc thẻ nhớ</li>
+                                <li>@item.MemoryRead</li>
+                            </ul>
+                            <ul>
+                                <li>Công nghệ màn hình</li>
+                                <li>@item.TechScreen</li>
+                            </ul>
+                            <ul>
+                                <li>Loại RAM</li>
+                                <li>@item.Ram</li>
+                            </ul>
+                        </div>
+                    }
+                }
+            }
+            else if (ViewBag.myProduct.Type == "Fashion")
+            {
+
+                foreach (var item in ViewBag.myProductFashionDetails)
+                {
+                    if (item.ProductID == ViewBag.myProduct.ID)
+                    {
+                        <div class="product-detail-description-fashion">
+                            <ul>
+                                <li>Chất vải</li>
+                                <li>@item.Fabric</li>
+                            </ul>
+                            <ul>
+                                <li>Họa tiết</li>
+                                <li>@item.Pattern</li>
+                            </ul>
+                            <ul>
+                                <li>Chiều dài tay áo</li>
+                                <li>@item.SleeveLenght</li>
+                            </ul>
+                            <ul>
+                                <li>Phong cách</li>
+                                <li>@item.Style</li>
+                            </ul>
+                        </div>
+                    }
+                }
+            }
+            else
+            {
+                foreach (var item in ViewBag.myProductElectroDetails)
+                {
+                    if (item.ProductID == ViewBag.myProduct.ID)
+                    {
+                        <div class="product-detail-description-electric">
+                            <ul>
+                                <li>Loại</li>
+                                <li>@item.Type</li>
+                            </ul>
+                            <ul>
+                                <li>Chất liệu</li>
+                                <li>@item.Material</li>
+                            </ul>
+                            <ul>
+                                <li>Dung tích</li>
+                                <li>@item.Capacity</li>
+                            </ul>
+                            <ul>
+                                <li>Hãng sản xuất</li>
+                                <li>@item.Manufacturer</li>
+                            </ul>
+                            <ul>
+                                <li>Bảo hành</li>
+                                <li>@item.Insurance</li>
+                            </ul>
+                            <ul>
+                                <li>Phương thức bảo hành</li>
+                                <li>@item.WarrantyMethod</li>
+                            </ul>
+                            <ul>
+                                <li>Xuất xứ</li>
+                                <li>@item.Made</li>
+                            </ul>
+                        </div>
+                    }
+                }
+
+            }
+        </div>
+    </div>
+    <div class="product-detail-comment">
+        <div>
+            <span>Đánh giá nhận xét về sản phẩm (<i style="color: gray;">1 lượt đánh giá</i> )</span>
+        </div>
+        <div class="product-detail-comment-star">
+            <ul>
+                <li>
+                    <span>5.0</span>
+                    <span>/</span>
+                    <span class="product-detail-comment-star-number">5</span>
+                    <span>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </span>
+                </li>
+                <li class="product-detail-comment-star-info">
+                    <i>
+                        Đây là thông tin người mua đánh giá shop bán sản phẩm này có đúng mô tả không.
+                    </i>
+                </li>
+
+            </ul>
+            <ul>
+                <li>
+                    <span>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </span>
+                    <div></div>
+                    <span>1</span>
+                </li>
+                <li>
+                    <span>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i style="color: gray;" class="fas fa-star"></i>
+                    </span>
+                    <div></div>
+                    <span>0</span>
+                </li>
+                <li>
+                    <span>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i style="color: gray;" class="fas fa-star"></i>
+                        <i style="color: gray;" class="fas fa-star"></i>
+                    </span>
+                    <div></div>
+                    <span>0</span>
+                </li>
+                <li>
+                    <span>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i style="color: gray;" class="fas fa-star"></i>
+                        <i style="color: gray;" class="fas fa-star"></i>
+                        <i style="color: gray;" class="fas fa-star"></i>
+                    </span>
+                    <div></div>
+                    <span>0</span>
+                </li>
+                <li>
+                    <span>
+                        <i class="fas fa-star"></i>
+                        <i style="color: gray;" class="fas fa-star"></i>
+                        <i style="color: gray;" class="fas fa-star"></i>
+                        <i style="color: gray;" class="fas fa-star"></i>
+                        <i style="color: gray;" class="fas fa-star"></i>
+                    </span>
+                    <div></div>
+                    <span>0</span>
+                </li>
+            </ul>
+        </div>
+        @foreach (var item in ViewBag.myListComment)
+        {
+            if (item.ProductID == ViewBag.myProduct.ID)
+            {
+                foreach (var itemCustomer in ViewBag.myListCustomer)
+                {
+                    if (item.UserID == itemCustomer.UserID)
+                    {
+                        <div class="product-detail-main-comment">
+                            <ul>
+                                <li>
+                                    <img width="30" src="https://media3.scdn.vn/img4/2021/04_28/c8BvyuoAOJvhapeKLKDi.png" alt="Đánh giá ẩn danh" class="">
+                                </li>
+                            </ul>
+                            <ul>
+                                <li class="product-detail-userName-comment">@itemCustomer.CustomerName</li>
+                                <li class="product-detail-comment-date">
+                                    @item.CommentDate
+                                </li>
+                            </ul>
+                            <ul style="position:relative;right:10px" class="product-detail-comment-mStar">
+                                <li>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <div class="product-detail-comment-content">
+                            <span>@item.CommentContent</span>
+                            <span>
+                                <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="d7e-0f24ac"><path d="M13 2c.615 0 1.142.045 1.748.222C16.092 2.612 17 3.527 17 4.999c0 .52-.092 1.075-.262 1.69-.112.407-.25.819-.44 1.329l-.343.905-.028.076H19c1.87 0 3 1.318 3 3 0 5.944-1.245 10-4 10h-6.966a6.741 6.741 0 01-2.37-.382 4.884 4.884 0 01-1.012-.492A1.992 1.992 0 016 22H4a2 2 0 01-2-2v-9a2 2 0 012-2h2a2 2 0 01.57.083c1.072-1.562 4.685-5.508 5.65-6.71l.3-.374H13zm.46 2.014c-1.546 1.848-5.053 5.687-5.318 6.305a1.66 1.66 0 00-.142.669v7.036l.006.15c.056.795.505 1.265 1.33 1.56a4.81 4.81 0 001.627.266H18c1.015 0 2-3.21 2-8 0-.641-.309-1-1-1h-4c-1.195 0-1.444-.925-1.195-1.925.058-.235.144-.494.274-.845.057-.154.29-.765.344-.91.171-.46.293-.821.387-1.162.126-.457.19-.842.19-1.159 0-.45-.238-.69-.81-.857a3.501 3.501 0 00-.73-.128zM6 11H4v9h2v-9z" fill="#6F787E" fill-rule="nonzero"></path></svg> Hữu ích
+                            </span>
+                        </div>
+                    }
+                }
+            }
+        }
+
+    </div>
+
+
+    <div class="product-detail-comment-for-you">
+        <div>
+            <img width="120" class="_7f7-cbd84f" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMzU2IiBoZWlnaHQ9IjM1NiIgdmlld0JveD0iMCAwIDM1NiAzNTYiPgogICAgPGRlZnM+CiAgICAgICAgPHBhdGggaWQ9ImEiIGQ9Ik0wIDBoMzU2djM1NkgweiIvPgogICAgPC9kZWZzPgogICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8bWFzayBpZD0iYiIgZmlsbD0iI2ZmZiI+CiAgICAgICAgICAgIDx1c2UgeGxpbms6aHJlZj0iI2EiLz4KICAgICAgICA8L21hc2s+CiAgICAgICAgPHVzZSBmaWxsPSIjRkZGIiBmaWxsLW9wYWNpdHk9IjAiIHhsaW5rOmhyZWY9IiNhIi8+CiAgICAgICAgPHJlY3Qgd2lkdGg9IjI0NiIgaGVpZ2h0PSIzOCIgeD0iNzUiIHk9IjcxIiBmaWxsPSIjRUVGOEZGIiBmaWxsLXJ1bGU9Im5vbnplcm8iIG1hc2s9InVybCgjYikiIHJ4PSIxOSIgdHJhbnNmb3JtPSJyb3RhdGUoLTI2LjIzIDE5OCA5MCkiLz4KICAgICAgICA8cmVjdCB3aWR0aD0iMjQ2IiBoZWlnaHQ9IjM4IiB4PSIzNCIgeT0iMTM0IiBmaWxsPSIjRUVGOEZGIiBmaWxsLXJ1bGU9Im5vbnplcm8iIG1hc2s9InVybCgjYikiIHJ4PSIxOSIgdHJhbnNmb3JtPSJyb3RhdGUoLTI2LjIzIDE1NyAxNTMpIi8+CiAgICAgICAgPHJlY3Qgd2lkdGg9IjI0NiIgaGVpZ2h0PSIzOCIgeD0iOTEiIHk9IjE0NyIgZmlsbD0iI0VFRjhGRiIgZmlsbC1ydWxlPSJub256ZXJvIiBtYXNrPSJ1cmwoI2IpIiByeD0iMTkiIHRyYW5zZm9ybT0icm90YXRlKC0zMy41OSAyMTQgMTY2KSIvPgogICAgICAgIDxyZWN0IHdpZHRoPSIyMTIiIGhlaWdodD0iMzgiIHg9IjgzIiB5PSIyMDUiIGZpbGw9IiNFRUY4RkYiIGZpbGwtcnVsZT0ibm9uemVybyIgbWFzaz0idXJsKCNiKSIgcng9IjE5IiB0cmFuc2Zvcm09InJvdGF0ZSgtMzMuNTkgMTg5IDIyNCkiLz4KICAgICAgICA8cmVjdCB3aWR0aD0iMTc2IiBoZWlnaHQ9IjM4IiB4PSI5MSIgeT0iMjUzIiBmaWxsPSIjRUVGOEZGIiBmaWxsLXJ1bGU9Im5vbnplcm8iIG1hc2s9InVybCgjYikiIHJ4PSIxOSIgdHJhbnNmb3JtPSJyb3RhdGUoLTMzLjU5IDE3OSAyNzIpIi8+CiAgICAgICAgPGcgZmlsbC1ydWxlPSJub256ZXJvIiBtYXNrPSJ1cmwoI2IpIj4KICAgICAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNzYgMTI3KSI+CiAgICAgICAgICAgICAgICA8cGF0aCBmaWxsPSIjRjQ3Rjg1IiBkPSJNMTc5LjY5IDBINzAuNTk5QzU5LjQxNS4wNCA0OS42ODkgNy42NjYgNDcgMTguNTA0aDk5Ljg3YzEzLjQxLjA0IDI0LjI3MSAxMC44ODMgMjQuMzEgMjQuMjcydjUwLjQ1N2EyNC4wNiAyNC4wNiAwIDAgMS0uNzA1IDUuNzY3aDkuMjE1YzEzLjQxLS4wMzkgMjQuMjcxLTEwLjg4MyAyNC4zMS0yNC4yNzJWMjQuMjcyQzIwMy45NjEgMTAuODgyIDE5My4xLjAzOSAxNzkuNjkgMHoiLz4KICAgICAgICAgICAgICAgIDxwYXRoIGZpbGw9IiNFNTZDNzciIGQ9Ik0xNzEgNDIuNDI0QzE3MC45NjEgMjguOTUgMTYwLjA5IDE4LjAzOSAxNDYuNjY4IDE4SDQ2LjcwNUEyNC4zMzQgMjQuMzM0IDAgMCAwIDQ2IDIzLjgwM3Y1MC43NzNDNDYuMDM5IDg4LjA1IDU2LjkxIDk4Ljk2MSA3MC4zMzIgOTloOTkuOTYzYy40NjctMS44OTkuNzA0LTMuODQ3LjcwNS01LjgwM1Y0Mi40MjR6Ii8+CiAgICAgICAgICAgICAgICA8cGF0aCBmaWxsPSIjN0VENEZCIiBkPSJNMTMyLjggMTI2LjE2M0g5My40MDFsLTMzLjU2MyAzMS40MDVhOS4wODcgOS4wODcgMCAwIDEtOC4yMDMgMi4yMDUgOS4xMjggOS4xMjggMCAwIDEtNi40NTMtNS41NDRsLTEwLjg3LTI4LjAzOEgyNC4yMDFDMTAuODUgMTI2LjE1Mi4wMzkgMTE1LjI5IDAgMTAxLjg3OVY1MS4zMTJDLjAzOSAzNy45IDEwLjg1MSAyNy4wMzkgMjQuMiAyN2gxMDguNmMxMy4zNDkuMDM5IDI0LjE2MSAxMC45IDI0LjIgMjQuMzEydjUwLjUzOWMtLjAzOSAxMy40MS0xMC44NTEgMjQuMjczLTI0LjIgMjQuMzEyeiIvPgogICAgICAgICAgICAgICAgPHJlY3Qgd2lkdGg9IjEwOCIgaGVpZ2h0PSIxMyIgeD0iMjUiIHk9IjUyIiBmaWxsPSIjRkZGIiByeD0iNi41Ii8+CiAgICAgICAgICAgICAgICA8cmVjdCB3aWR0aD0iMTA4IiBoZWlnaHQ9IjEzIiB4PSIyNSIgeT0iNzAiIGZpbGw9IiNGRkYiIHJ4PSI2LjUiLz4KICAgICAgICAgICAgICAgIDxyZWN0IHdpZHRoPSI2OCIgaGVpZ2h0PSIxMyIgeD0iMjUiIHk9Ijg5IiBmaWxsPSIjRkZGIiByeD0iNi41Ii8+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPgo=" alt="Sản phẩm hiện chưa có hỏi đáp.">
+            <span class="product-no-ask">Sản phẩm hiện chưa có bình luận.</span>
+            <span class="product-no-ask">Viết bình luận của bạn về sản phẩm</span>
+            <form action="/Sendo/Comment">
+                <input type="hidden" name="ProductID" value="@ViewBag.myProduct.ID" />
+                <input name="CommentContent" type="text" placeholder="Bạn có câu hỏi về sản phẩm này?Đặt câu hỏi cho shop">
+                <button class="btn-submit-comment" type="submit">Bình luận <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24" height="24" class="_7f7-082b91"><g data-name="Layer 2"><g data-name="Layer 1"><path d="M4,42,46,24,4,6,4,20l30,4L4,28Z"></path><path d="M0,0H48V48H0Z" fill="none"></path></g></g></svg></button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<span class="product-your-love">
+    Ở đây có sản phẩm bạn thích
+</span>
+<div class="main-product-wrap">
+    @foreach(var item in ViewBag.myListProduct)
+            {
+                if(item.Type == ViewBag.myProduct.Type)
+                {
+                    <div class="main-product-item">
+                        <a href="/Sendo/Details/@item.ID">
+                            <img width="100%" src="@Url.Content(item.ProductImage)" alt="">
+                            <div class="product-installment-icon">
+                                @if (item.IsInstallment == 1)
+                                {
+                                    <img width="20" src="https://media3.scdn.vn/img4/2021/08_20/xuKcsLr4kFMaVTktqwCL.png" alt="">
+                                    <span>Trả góp 0%</span>
+                                }
+                            </div>
+                            <div class="main-product-description">
+                                <span>
+                                    @if (item.IsFreeShip == 1)
+                                    {
+                                        <img class="product-freeship-icon" width="60" src="https://media3.scdn.vn/img4/2021/10_21/mFcIndYzGOkBpNH6w5oN.png" alt="">
+                                    }
+                                    <img width="60" src="https://media3.scdn.vn/img4/2020/07_30/h6fJaiL5WkEbDU2eQRZb.png" alt="shop-badge" class="">
+                                    @item.ProductName
+                                </span>
+                            </div>
+                            <span class="main-product-price">
+                                <p class="main-product-price-new">@item.ProductPriceNew</p>
+                                <p class="main-product-price-old">@item.ProductPriceOld</p>
+                            </span>
+
+                            <span class="main-product-place">
+                                <span>@item.ProductAddress</span>
+                                <span>Đã bán @item.ProductSold</span>
+                            </span>
+                        </a>
+                    </div>
+
+                }
+            }
+</div>
+<div class="main-pagination">
+    <a href="#">Xem thêm</a>
+</div>
+</div>

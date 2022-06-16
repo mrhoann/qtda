@@ -1,0 +1,158 @@
+﻿
+@{
+    ViewBag.Title = "HomeOptions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .main-product-item {
+        border: 1px solid rgba(128, 128, 128, 0.353);
+    }
+
+        .main-product-item:hover {
+            box-shadow: 3px 3px 3px 3px rgba(128, 128, 128, 0.253);
+        }
+
+    .main-flash-sale-wrap-item {
+        border: 1px solid rgba(128, 128, 128, 0.153);
+    }
+
+        .main-flash-sale-wrap-item:hover {
+            box-shadow: 3px 3px 3px 3px rgba(128, 128, 128, 0.253);
+        }
+</style>
+<div class="main-category-wrap">
+    <div class="main-caetgory-item">
+        @foreach (var item in ViewBag.mySubListCategory)
+        {
+            <div class="main-caetgory-item-main">
+                <div class="main-category-img">
+                    <img width="50" height="50" src="@Url.Content(item.SubCategoryImage)" alt="shortcut-block" class="b91-896c91 ls-is-cached lazyloaded">
+                </div>
+                <span>@item.SubCategoryName</span>
+            </div>
+        }
+
+    </div>
+    <div class="header-banner">
+        <div class="">
+            <img data-src="https://media3.scdn.vn/img4/2021/10_26/UmUK4ywLYVbB4LIW3AFP.png" src="https://media3.scdn.vn/img4/2021/10_26/UmUK4ywLYVbB4LIW3AFP.png" alt="00h00 - 23h59 26/10" class="blur bf8-c9a0b5 ls-is-cached lazyloaded">
+        </div>
+    </div>
+
+
+    <div class="main">
+        <div class="main-flash-sale">
+            <div class="flash-scroll-left">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="flash-scroll-right">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="main-flash-time">
+                <div class="main-flash-time-icon">
+                    <img width="120" height="120" src="https://web-static.scdn.vn/sendo-buyers-flash-sale-widget/c57e17c8/w3front/static/images/6d0b98fffda3d7d5.svg" alt="">
+                </div>
+                <div class="main-flash-time-item">
+                    <ul>
+                        <li id="hour"></li>
+                        <p> : </p>
+                        <li id="min"></li>
+                        <p> : </p>
+                        <li id="sec"></li>
+                    </ul>
+                </div>
+                <div class="main-view-all-fl">
+                    <a href="#">Xem tất cả</a>
+                </div>
+            </div>
+
+            <div class="main-flash-sale-wrap">
+                <div class="main-flash-sale-wrap-infinitive">
+                    @foreach (var item in ViewBag.myProductSaleFollowPath)
+                    {
+                            string priceNew = Convert.ToString(item.ProductPriceNew);
+                            string priceOld = Convert.ToString(item.ProductPriceOld);
+                            string myPriceNew = priceNew + ".000";
+                            string myPriceOld = priceOld + ".000";
+
+                            string intPriceNew = priceNew.Replace(".", "");
+                            string intPriceOld = priceOld.Replace(".", "");
+
+                            double percentSale = Math.Round(Convert.ToDouble(intPriceNew) / Convert.ToDouble(intPriceOld) * 100);
+                            double myPercentSale = 100 - percentSale;
+                        <a href="#">
+                            <div class="main-flash-sale-wrap-item">
+                                <div style="width:135px;height:138px">
+                                    <img width="142" heigh="200" src="@Url.Content(item.ProductImage)">
+                                </div>
+                                <img width="70" style="position: absolute; bottom: 68px;left: 10px;" src="https://media3.scdn.vn/img4/2021/04_16/BNnRsHfKT5xoQ7UKGWto.png" alt="clear-sale">
+                                <span class="main-fs-price-new">@myPriceNew đ</span>
+                                <span class="main-price-old">
+                                    <p class="main-fs-price-old">@myPriceOld đ</p>
+                                    <p class="main-fs-price-sale">- @myPercentSale %</p>
+
+                                </span>
+                            </div>
+                        </a>
+                        
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="main-product-wrap">
+            @foreach (var item in ViewBag.myProduct)
+            {
+                if(item.CategoryID == ViewBag.pathID)
+                {
+                string priceNew = Convert.ToString(item.ProductPriceNew);
+                string priceOld = Convert.ToString(item.ProductPriceOld);
+                string myPriceNew = priceNew + ".000";
+                string myPriceOld = priceOld + ".000";
+
+                    <div class="main-product-item">
+                        <a href="/Sendo/Details/@item.ID">
+                            <img width="100%" src="@Url.Content(item.ProductImage)" alt="">
+                            <div class="product-installment-icon">
+                                @if (item.IsInstallment == 1)
+                                {
+                                    <img width="20" src="https://media3.scdn.vn/img4/2021/08_20/xuKcsLr4kFMaVTktqwCL.png" alt="">
+                                    <span>Trả góp 0%</span>
+                                }
+                            </div>
+                            <div class="main-product-description">
+                                <span>
+                                    @if (item.IsFreeShip == 1)
+                                    {
+                                        <img class="product-freeship-icon" width="60" src="https://media3.scdn.vn/img4/2021/10_21/mFcIndYzGOkBpNH6w5oN.png" alt="">
+                                    }
+                                    <img width="60" src="https://media3.scdn.vn/img4/2020/07_30/h6fJaiL5WkEbDU2eQRZb.png" alt="shop-badge" class="">
+                                    @item.ProductName
+                                </span>
+                            </div>
+                            <span class="main-product-price">
+                                <p class="main-product-price-new">@myPriceNew</p>
+                                <p class="main-product-price-old">@myPriceOld</p>
+                            </span>
+
+                            <span class="main-product-place">
+                                <span>@item.ProductAddress</span>
+                                <span>Đã bán @item.ProductSold</span>
+                            </span>
+                        </a>
+                    </div>
+                }
+                            
+                    }              
+        </div>
+        <div class="main-pagination">
+            <a href="#">Xem thêm</a>
+        </div>
+    </div>
+
+

@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "ListCustomer";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<style>
+    * {
+        font-family: sans-serif;
+    }
+
+    body {
+        text-align: left;
+    }
+
+    table th, td {
+        border: 1px solid #333;
+    }
+
+    #form {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        height: auto;
+        margin: 0 auto;
+        margin-top: 30px;
+    }
+
+    table {
+        margin: 0 auto;
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    #form input {
+        outline: none;
+        height: 40px;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+        #form input:focus {
+            border: 2px solid blue;
+        }
+
+    h2 {
+        color: dodgerblue;
+        width: 70%;
+        height: auto;
+        font-weight: bold;
+        margin: 0 auto;
+        position: relative;
+        top: 10px;
+    }
+</style>
+
+
+<table>
+    <h2>Danh sách khách hàng</h2>
+    <tr>
+        <th>Tên khách hàng</th>
+        <th>Số điện thoại</th>
+        <th>Địa chỉ</th>
+        <th>Email</th>
+        <th>Thao tác</th>
+    </tr>
+    @foreach (var item in ViewBag.myListCustomer)
+    {
+        <tr>
+            <td>@item.CustomerName</td>
+            <td>@item.Phone</td>
+            <td>
+                <span>@item.Adress</span>
+                <span>@item.Wards</span>
+                <span>@item.City</span>
+            </td>
+            <td>@item.Email</td>
+            <td><a href="/Admin/Admin/XoaKhachHang/@item.ID">Xóa</a></td>
+        </tr>
+    }
+
+</table>
+

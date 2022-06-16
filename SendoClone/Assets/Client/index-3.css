@@ -1,0 +1,154 @@
+﻿.main-manager-order-wrap {
+    width: 1300px;
+    display: flex;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 115px;
+}
+
+.main-category-order {
+    width: 275px;
+    height: auto;
+    border-right: 1px solid rgba(128, 128, 128, 0.156);
+    margin-top:30px;
+}
+
+.main-status-order {
+    width: 1025px;
+    height: auto;
+    margin-top:30px
+}
+
+.main-category-info-user ul {
+    display: flex;
+}
+
+    .main-category-info-user ul li:last-child {
+        margin-left: 5px;
+    }
+
+.main-category-wrap-icon-user {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid rgba(128, 128, 128, 0.445);
+}
+
+    .main-category-wrap-icon-user img {
+        border-radius: 50%;
+    }
+
+.update-account {
+    color: #333;
+    font-size: 12px;
+}
+
+.main-transaction {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.main-transaction-title {
+    text-align: left;
+    display: block;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    font-weight: bold;
+    border-left: 4px solid tomato;
+    background-color: #eeeeee;
+}
+
+    .main-transaction-title span {
+        margin-left: 10px;
+        font-size: 16px;
+    }
+
+.nav-item-order-user li {
+    color: gray;
+    margin-left: 30px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+    .nav-item-order-user li a {
+        color: gray;
+        display: flex;
+    }
+
+.icon-order-nav {
+    width: 40px;
+}
+
+.advertisiment-order {
+    margin-top: 30px;
+    font-size: 15px;
+}
+
+    .advertisiment-order ul {
+        display: flex;
+    }
+
+
+.main-status-order-title {
+    font-weight: 700;
+    color: #333;
+    margin-top: 5px;
+    margin-left: 32px;
+}
+
+.main-status-order-product {
+    width: 1000px;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 30px;
+    background-color: #FFFFFF;
+}
+
+    .main-status-order-product ul {
+        display: flex;
+        width: 100%;
+        height: 40px;
+        align-items: center;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.158);
+    }
+
+        .main-status-order-product ul li {
+            font-size: 14px;
+            margin-left: 20px;
+            color: #333;
+            width: 170px;
+            height: 38px;
+            line-height: 38px;
+            text-align:center;
+        }
+
+.main-item-product-order-user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    width: 100%;
+    height: auto;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+}
+
+.main-item-product-title-order {
+    color: gray;
+    font-size: 12px;
+}
+
+.cancle-product-order {
+    color: orangered;
+    margin-right: 5px;
+}
+
+.notification-cart-empty {
+    width: 100%;
+    height: 300px;
+    text-align: center;
+}

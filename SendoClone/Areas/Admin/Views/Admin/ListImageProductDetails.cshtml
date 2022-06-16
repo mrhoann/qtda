@@ -1,0 +1,59 @@
+﻿@model IEnumerable<DAL.ImageProductDe>
+
+@{
+    ViewBag.Title = "ListImageProductDetails";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách ảnh chi tiết sản phẩm</h2>
+
+
+<style>
+    body {
+        text-align: center;
+    }
+
+    table {
+        text-align: center
+    }
+
+    th, td {
+        border: 1px solid gray;
+    }
+
+    a {
+        text-decoration: none;
+        display: inline;
+    }
+</style>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductImage)
+        </th>
+        <th>
+            Thao tác
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductID)
+            </td>
+            <td>
+                <img width="120" src="@Url.Content(item.ProductImage)"/>
+            </td>
+            <td>
+                @Html.ActionLink("Thêm", "CreateImageProductDetails", new { id = item.ID }) 
+                @Html.ActionLink("Sửa", "UpdateImageProductDetails", new { id = item.ID }) 
+                @Html.ActionLink("Xóa", "DeleteImageProductDetails", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>

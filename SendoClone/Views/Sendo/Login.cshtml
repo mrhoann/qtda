@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="main-login-register">
+    <div class="main-login-item">
+        <span class="main-login-item-title">Đăng Nhập</span>
+        <form action="/Sendo/Login" method="Post">
+            <label for="email">Địa chỉ email của bạn</label>
+            <input name="Email" class="main-login-input" id="email" type="text" placeholder="Example@gmail.com">
+            <label for="password">Mật khẩu của bạn</label>
+            <input name="Password" class="main-login-input" id="password" type="password">
+            <div>
+                <span>
+                    <input class="main-login-item-checkbox" type="checkbox">
+                    <p>Nhớ tài khoản</p>
+                </span>
+                <span>
+                    <a href="#"><p>Bạn đã quên mật khẩu ?</p></a>
+                </span>
+            </div>
+            <input class="main-login-item-btn" type="submit" value="Đăng nhập">
+        </form>
+    </div>
+
+    <div class="main-register-item">
+        <span class="main-register-item-title">Đăng Kí</span>
+        <form action="">
+            <label for="email">Địa chỉ email của bạn</label>
+            <input id="email" class="main-register-input" type="text" placeholder="Example@gmail.com">
+            <label for="password">Mật khẩu của bạn</label>
+            <input id="password" class="main-register-input" type="password">
+            <label for="repassword"> Nhập lại mật khẩu của bạn</label>
+            <input id="repassword" class="main-register-input" type="password">
+            <input class="main-register-item-btn" type="submit" value="Đăng kí">
+        </form>
+    </div>
+</div>
